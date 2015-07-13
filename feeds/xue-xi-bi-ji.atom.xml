@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Bender's Badlands</title><link href="http://blog.zhangning.me/" rel="alternate"></link><link href="http://blog.zhangning.me/feeds/xue-xi-bi-ji.atom.xml" rel="self"></link><id>http://blog.zhangning.me/</id><updated>2015-07-13T18:48:00+08:00</updated><entry><title>Window下基于Pelican搭建自己的博客</title><link href="http://blog.zhangning.me/articles/xue-xi-bi-ji/2015/build_blog.html" rel="alternate"></link><updated>2015-07-13T18:48:00+08:00</updated><author><name>XF</name></author><id>tag:blog.zhangning.me,2015-07-13:articles/xue-xi-bi-ji/2015/build_blog.html</id><summary type="html">
+&lt;h2 id="1"&gt;1. 前言&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://git-scm.com/"&gt;Git&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Git是一个开源免费的版本管理系统，与采用集中式管理的SVN不同，它基于分布式管理。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;GitHub是一个远程仓库，用于托管各种Git库，并提供管理界面浏览代码，很多开源项目都托管在GitHub上，可以方便他人参与到该项目中，同时也可以分享自己的项目。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="Python"&gt;Python&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Python是一种当前十分流行的解释性编程语言，它的执行效率低于C语言，但随着当今的计算机的计算速度越来越快，执行效率的差异性已经没那么明显，Python的抽象程度很高，可以很简洁地实现所需要的功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="docs.getpelican.com"&gt;Pelican&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Pelican是一个托管在GitHub上的开源项目，可以到&lt;a href="https://github.com/getpelican/pelican/tree/3.6.0"&gt;这里&lt;/a&gt;clone到本地，Pelican是基于Python编写的，用于生成静态网页，支持 reStructuredText or Markdown。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://zh.wikipedia.org/zh-cn/Markdown"&gt;Markdwon&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Markdwon是一种轻量级的标记语言，与HTML相比，它使用了更容易为人们所记忆理解的符号来实现文本编辑，通过不同的转换工具，可以将Markdown转换成HTML、LaTeX，Docbook等，使用它来写博客是一件很流行、很有意思的尝试。&lt;/p&gt;
+&lt;p&gt;在Windows使用&lt;a href="http://markdownpad.com/"&gt;Markdownpad&lt;/a&gt;，也可以使用一些在线编辑工具，例如&lt;a href="https://www.zybuluo.com/mdeditor"&gt;Cmd Markdown&lt;/a&gt;，&lt;a href="http://mahua.jser.me/"&gt;mahua&lt;/a&gt;等，这些工具都有预览功能；Linux下可以使用&lt;a href="http://sourceforge.net/p/retext/home/ReText/"&gt;ReText&lt;/a&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="2"&gt;2. 环境安装&lt;/h2&gt;
+&lt;h3 id="21-git"&gt;2.1 Git安装&lt;/h3&gt;
+&lt;p&gt;Windows下到&lt;a href="http://git-scm.com/downloads"&gt;这里&lt;/a&gt;下载安装包，会得到一个类似Linux的终端命令界面，可以通过它运行Git相关的命令。 &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Git_command" src="./images/Git_command.jpg"/&gt;&lt;/p&gt;
+&lt;h3 id="21-pelican"&gt;2.1 Pelican安装&lt;/h3&gt;</summary><category term="Python"></category><category term="Pelican"></category><category term="Markdown"></category></entry></feed>
