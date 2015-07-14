@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Bender's Badlands</title><link href="http://blog.zhangning.me/" rel="alternate"></link><link href="http://blog.zhangning.me/feeds/xue-xi-bi-ji.atom.xml" rel="self"></link><id>http://blog.zhangning.me/</id><updated>2015-07-13T18:48:00+08:00</updated><entry><title>Window下基于Pelican搭建自己的博客</title><link href="http://blog.zhangning.me/articles/xue-xi-bi-ji/2015/build_blog.html" rel="alternate"></link><updated>2015-07-13T18:48:00+08:00</updated><author><name>XF</name></author><id>tag:blog.zhangning.me,2015-07-13:articles/xue-xi-bi-ji/2015/build_blog.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>XF BLOG</title><link href="http://xiefeng6640.github.io/" rel="alternate"></link><link href="http://xiefeng6640.github.io/feeds/xue-xi-bi-ji.atom.xml" rel="self"></link><id>http://xiefeng6640.github.io/</id><updated>2015-07-13T18:48:00+08:00</updated><entry><title>Window下基于Pelican搭建自己的博客</title><link href="http://xiefeng6640.github.io/articles/xue-xi-bi-ji/2015/build_blog.html" rel="alternate"></link><updated>2015-07-13T18:48:00+08:00</updated><author><name>XF</name></author><id>tag:xiefeng6640.github.io,2015-07-13:articles/xue-xi-bi-ji/2015/build_blog.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 前言&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -30,12 +30,196 @@
 &lt;p&gt;&lt;a href="http://zh.wikipedia.org/zh-cn/Markdown"&gt;Markdwon&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Markdwon是一种轻量级的标记语言，与HTML相比，它使用了更容易为人们所记忆理解的符号来实现文本编辑，通过不同的转换工具，可以将Markdown转换成HTML、LaTeX，Docbook等，使用它来写博客是一件很流行、很有意思的尝试。&lt;/p&gt;
-&lt;p&gt;在Windows使用&lt;a href="http://markdownpad.com/"&gt;Markdownpad&lt;/a&gt;，也可以使用一些在线编辑工具，例如&lt;a href="https://www.zybuluo.com/mdeditor"&gt;Cmd Markdown&lt;/a&gt;，&lt;a href="http://mahua.jser.me/"&gt;mahua&lt;/a&gt;等，这些工具都有预览功能；Linux下可以使用&lt;a href="http://sourceforge.net/p/retext/home/ReText/"&gt;ReText&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;在Windows使用&lt;a href="http://markdownpad.com/"&gt;Markdownpad&lt;/a&gt;，也可以使用一些在线编辑工具，例如
+&lt;a href="https://www.zybuluo.com/mdeditor"&gt;Cmd Markdown&lt;/a&gt;，
+&lt;a href="http://mahua.jser.me/"&gt;mahua&lt;/a&gt;,
+&lt;a href="http://daringfireball.net/projects/markdown/dingus"&gt;Daring Fireball: Markdown Web Dingus&lt;/a&gt;等，
+这些工具都有预览功能；Linux下可以使用&lt;a href="http://sourceforge.net/p/retext/home/ReText/"&gt;ReText&lt;/a&gt;。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="2"&gt;2. 环境安装&lt;/h2&gt;
 &lt;h3 id="21-git"&gt;2.1 Git安装&lt;/h3&gt;
 &lt;p&gt;Windows下到&lt;a href="http://git-scm.com/downloads"&gt;这里&lt;/a&gt;下载安装包，会得到一个类似Linux的终端命令界面，可以通过它运行Git相关的命令。 &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Git_command" src="./images/Git_command.jpg"/&gt;&lt;/p&gt;
-&lt;h3 id="21-pelican"&gt;2.1 Pelican安装&lt;/h3&gt;</summary><category term="Python"></category><category term="Pelican"></category><category term="Markdown"></category></entry></feed>
+&lt;p&gt;&lt;img alt="Git_command" src="/images/Git_command.jpg"/&gt;&lt;/p&gt;
+&lt;h3 id="22-pelicanmarkdown"&gt;2.2 Pelican、Markdown安装&lt;/h3&gt;
+&lt;p&gt;Pelican的安装是通过python下软件包安装工具pip实现，在Windows环境下安装Python的时候勾选即可。
+代码如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install pelican
+pip install markdown
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="3"&gt;3. 生成博客&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cd f:                       #在Git bash下进入F盘
+mkdir blog                  #新建存放博客文件的目录
+cd blog
+pelican-quickstart          #进入目录，进入pelican快速配置模式，配置完成后会生成一个配置文件，即使一开始觉得配置有误也没关系，后面还可以继续修改的。
+//查看当前目录结构
+|-- content                 # 存放博客文章内容
+|-- develop_server.sh       # 用于开启测试服务器
+|-- Makefile                # 自动生成博客的makefile
+|-- output                  # 最终输出得到的博客网页
+|-- pelicanconf.py          # 整个博客生成过程中最重要的配置文件
+|-- publishconf.py          # 发布用的配置文件
+
+pelican ./content -s ./pelicanconf.py #生成博客，最终可以再output目录下看到博客网页，由于本地上没有make命令，又不想折腾cygwin
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上述的操作就可以生成一个可以正常访问的网站，但是还有做一些美化的工作，其中包括了更换主题、添加评论以及使用一些特定功能的插件等等，而所有的这些功能的实现均是在配置文件pelicanconf.py中实现，因此该文件的重要性毋庸置疑。&lt;/p&gt;
+&lt;h4 id="_1"&gt;&lt;strong&gt;配置文件&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;pelicanconf.py中的配置选项较多，包括作者信息、URL信息、时区、日期、语言等等，由于自己也是刚刚接触，再加上英文水平太水，所以很多地方被弄得不明不白，但&lt;a href="http://docs.getpelican.com/en/latest/settings.html"&gt;Pelican官方文档&lt;/a&gt;中给出了最全面的配置解释，需要了解的时候可以去看看。
+以下是自己参考了别人得到的配置文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# !/usr/bin/env python&lt;/span&gt;
+&lt;span class="c"&gt;# -*- coding: utf-8 -*-  # &lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;__future__&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;unicode_literals&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u'XieFeng'&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u"XF BLOG"&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'http://xiefeng6640.github.io'&lt;/span&gt;
+&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"theme/elegant"&lt;/span&gt;
+&lt;span class="n"&gt;TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'Asia/Shanghai'&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_LANG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;u'zh'&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_DATE_FORMAT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'%Y-%m-&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt; %H:%M:%S'&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_DATE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'fs'&lt;/span&gt;
+&lt;span class="n"&gt;FILENAME_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'(?P&amp;lt;slug&amp;gt;.*)'&lt;/span&gt;
+&lt;span class="c"&gt;#URL&lt;/span&gt;
+&lt;span class="n"&gt;USE_FOLDER_AS_CATEGORY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;PATH&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'./content'&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'./images'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;'images'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c"&gt;#ARTICLE_PATHS = ['articles']&lt;/span&gt;
+&lt;span class="n"&gt;ARTICLE_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'articles/{category}/{date:%Y}/{slug}.html'&lt;/span&gt;
+&lt;span class="n"&gt;ARTICLE_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ARTICLE_URL&lt;/span&gt;
+&lt;span class="n"&gt;PAGE_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'pages/{slug}.html'&lt;/span&gt;
+&lt;span class="n"&gt;PAGE_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;PAGE_URL&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'categories/{slug}/index.html'&lt;/span&gt;
+&lt;span class="n"&gt;TAG_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'tag/{slug}.html'&lt;/span&gt;
+&lt;span class="n"&gt;MD_EXTENSIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'codehilite(css_class=highlight)'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'extra'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'headerid'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'toc'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;DIRECT_TEMPLATES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="s"&gt;'index'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'tags'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'categories'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;'archives'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'search'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'404'&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;TAG_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;''&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;''&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR_SAVE_AS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;''&lt;/span&gt;
+
+&lt;span class="n"&gt;DEFAULT_PAGINATION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="c"&gt;# 邮件联系Mailchimp&lt;/span&gt;
+&lt;span class="sd"&gt;'''&lt;/span&gt;
+&lt;span class="sd"&gt;EMAIL_SUBSCRIPTION_LABEL = u'Get Monthly Updates'&lt;/span&gt;
+&lt;span class="sd"&gt;EMAIL_FIELD_PLACEHOLDER = u'Enter your email...'&lt;/span&gt;
+&lt;span class="sd"&gt;SUBSCRIBE_BUTTON_TITLE = u'Send me Free updates'&lt;/span&gt;
+&lt;span class="sd"&gt;MAILCHIMP_FORM_ACTION = u'empty'&lt;/span&gt;
+&lt;span class="sd"&gt;'''&lt;/span&gt;
+&lt;span class="c"&gt;#评论&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'http://xiefeng6640.github.io'&lt;/span&gt;
+&lt;span class="n"&gt;DISQUS_SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;'your shortname'&lt;/span&gt;
+
+&lt;span class="n"&gt;PLUGIN_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'plugins'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;PLUGINS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;'sitemap'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'extract_toc'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;'tipue_search'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="c"&gt;#用于被搜索引擎检索&lt;/span&gt;
+&lt;span class="n"&gt;SITEMAP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;"format"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;"xml"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;"priorities"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;"articles"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;"indexes"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;"pages"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s"&gt;"changefreqs"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;"articles"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;"monthly"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;"indexes"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;"daily"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;"pages"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;"monthly"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;LINKS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'Pelican'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'http://getpelican.com/'&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'Python.org'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'http://python.org/'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# Social&lt;/span&gt;
+&lt;span class="n"&gt;SOCIAL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'Github'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'https://github.com/xiefeng6640/xiefeng6640.github.io.git'&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'weibo'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'http://weibo.com/u/1892384477'&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;'Email'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;'mailto:xiefeng6640@163.com'&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+          &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="_2"&gt;&lt;strong&gt;更换主题&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;博客默认的主题一般比较简单，所以一般还要根据自己的喜好选择合适的主题，pelican提供了很多可以选择的主题，进入&lt;a href="http://pelicanthemes.com/"&gt;http://pelicanthemes.com/&lt;/a&gt;可以预览主题效果，所有的&lt;a href="https://github.com/getpelican/pelican-themes"&gt;pelican-themes&lt;/a&gt;托管在Github上。
+我自己一向都有选择困难症，选择越多越纠结、越痛苦，在浏览这些主题的过程中，像&lt;a href="https://github.com/mawenbao/niu-x2/tree/4e045ad67c1974c4dd1ddd98ba943cc6d54500e7"&gt;niu-x2&lt;/a&gt;、&lt;a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3"&gt;pelican-bootstrap3&lt;/a&gt;、&lt;a href="https://github.com/getpelican/pelican-themes/tree/master/tuxlite_tbs"&gt;tuxlite_tbs&lt;/a&gt;以及自己使用的&lt;a href="http://oncrashreboot.com/elegant-best-pelican-theme-features"&gt;elegant&lt;/a&gt;，个人觉得都挺好，特别是有些主题还支持TOC，阅读文章的时候觉得顺心很多。
+主题的修改只需要配置：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;THEME = "theme/elegant" #根据主题所在的路径进行修改
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="_3"&gt;&lt;strong&gt;添加评论&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Pelican可以使用国外的Disqus评论系统，自己需要到&lt;a href="https://disqus.com/"&gt;Disqus&lt;/a&gt;去申请账号，并记下对应的shortname，shortname可以在主页右上角的Setting-&amp;gt;admin-&amp;gt;settings-&amp;gt;general菜单下的Site Identity查看得到。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;DISQUS_SITENAME = 'your shortname'  #填入你自己的shortname
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;假如想使用百度、新浪微博、豆瓣等国内账号的话，可以使用&lt;a href="http://duoshuo.com/"&gt;多说&lt;/a&gt;评论系统，由于评论一般都是出现在文章的末尾，因此修改/elegant/templates/article.html的内容，把&lt;code&gt;&amp;lt;!-- Duoshuo Comment Begin--&amp;gt;&lt;/code&gt;和&lt;code&gt;&amp;lt;!-- Duoshuo Comment End--&amp;gt;&lt;/code&gt;之前的代码放到文章末尾处。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;        &lt;span class="c"&gt;&amp;lt;!-- Duoshuo Comment Begin--&amp;gt;&lt;/span&gt; 
+        &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;DUOSHUO_SITENAME&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;SITEURL&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="nv"&gt;article.status&lt;/span&gt; &lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"draft"&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+         &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"comments"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Comments !&lt;span class="nt"&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+
+            &lt;span class="nt"&gt;&amp;lt;div&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"ds-thread"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;"text/javascript"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                var duoshuoQuery = {short_name:"&lt;span class="cp"&gt;{{&lt;/span&gt; &lt;span class="nv"&gt;DUOSHUO_SITENAME&lt;/span&gt; &lt;span class="cp"&gt;}}&lt;/span&gt;"};
+          (function() {
+           var ds = document.createElement('script');
+           ds.type = 'text/javascript';ds.async = true;
+           ds.src = 'http://static.duoshuo.com/embed.js';
+           ds.charset = 'UTF-8';
+           (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+
+           })();
+          &lt;span class="nt"&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+          &lt;span class="nt"&gt;&amp;lt;noscript&amp;gt;&lt;/span&gt;Please enable JavaScript to view the comments.&lt;span class="nt"&gt;&amp;lt;/noscript&amp;gt;&lt;/span&gt;
+          &lt;span class="cp"&gt;{%&lt;/span&gt; &lt;span class="k"&gt;endif&lt;/span&gt; &lt;span class="cp"&gt;%}&lt;/span&gt;
+        &lt;span class="c"&gt;&amp;lt;!-- Duoshuo Comment End--&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;最后还要在pelicanconf.py中设置多说的short_name&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;DUOSHUO_SITENAME = 'your_short_name'&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id="_4"&gt;&lt;strong&gt;添加插件&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Pelican提供了很多插件，可以去&lt;a href="https://github.com/getpelican/pelican-plugins"&gt;Github插件库&lt;/a&gt;中下载，根据对应插件的说明在配置文件中配置好即可，我这里暂时只用了三种插件，&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;PLUGIN_PATHS = ['plugins']                          #插件的源码位置
+PLUGINS = ['sitemap', 'extract_toc','tipue_search'] #启用插件
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="_5"&gt;&lt;strong&gt;其他&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;其他方面还有一些用于分享交流的链接之类了，这些都是在LINKS和SOCIAL字段中定义的。&lt;/p&gt;
+&lt;h2 id="4"&gt;4 博文撰写&lt;/h2&gt;
+&lt;p&gt;博客的主体搭建好之后，开始写自己的博文了，本文使用MarkdownPad2作为编辑软件，根据自己的排版需求得到整洁干净的博文版面。&lt;/p&gt;
+&lt;p&gt;在content目录下新建一个.md文件，然后按照markdown语法，结合排版需求，可以很快得到很好看的博文。关于markdown的语法，可以参考&lt;a href="http://docs.getpelican.com/en/3.3.0/getting_started.html#writing-content-using-pelican"&gt;这里&lt;/a&gt;，以下是使用MarkdownPad2编辑的截图：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="markdown_screenshot" src="/images/markdown_screenshot.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;左侧属于编辑区，右侧属于预览区。&lt;/p&gt;
+&lt;h2 id="5"&gt;5 博客发布&lt;/h2&gt;
+&lt;p&gt;现在自己还属于一枚学生党，暂时没钱去购买域名，所以只能利用Github提供的pages功能，把博客放到Giuhub上托管。&lt;/p&gt;
+&lt;p&gt;首先你得要有一个Githhub账号的，没有的就去&lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt;注册吧；然后得新建一个仓库(repository)，该仓库的命名是有要求的，必须是username.github.io的格式，username是自己取的，否则的话无法访问博客。仓库建立好之后我们就可以把output目录下生成的文件上传到仓库上去了，上传成功之后，就可以在浏览器中输入http://username.github.io访问自己创建的博客了。关于git的一些命令可以参考&lt;a href="http://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"&gt;基础-远程仓库的使用&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;git上传文件的过程:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git init                        #在output目录下创建仓库
+git add .                       #增加当前目录下的文件到临时区
+git status                      #查看仓库的变化
+git commit -m "your commit messages"        #提交工作区的修改内容
+git remote add https://github.com/username./username..github.io.git                 #添加远程仓库
+git push -u origin master               #推送博客文件到远程仓库，后面将要输入github的用户名和密码
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id="6"&gt;6 总结&lt;/h2&gt;
+&lt;p&gt;往后在写博客的时候，主要按照以下流程就可以更新博客了：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican ./content -s ./pelicanconf.py
+git add .
+git commit -m "your commit messages"
+git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;总的来说，创建博客需要以下的几个步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在windows、linux、mac下安装git、markdown、pelican、pip，还要注册GitHub、Disqus账号&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过pelican-quickstart生成一个博客原型，然后根据需求修改pelicanconf.py中的配置项，然后再运行make html或者pelican ./content -s ./pelicanconf.py生成博客&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;在content目录下用markdownpad2编辑博文，并更新&lt;/li&gt;
+&lt;li&gt;在git下把博客目录文件上传到Github远程仓库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;到这里为止，一个博客已经基本成型了，还有很多地方需要自己慢慢去学习，慢慢去了解。&lt;/p&gt;
+&lt;p&gt;博客创建的过程中参考很多人的经验，对此非常感谢。&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://kevinyoung.gitcafe.io/articles/blog/build_your_blog.html"&gt;http://kevinyoung.gitcafe.io/articles/blog/build_your_blog.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;http://www.xycoding.com/articles/2013/11/21/blog-create/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html"&gt;http://www.wengweitao.com/shi-yong-pelican-github-pagesda-jian-ge-ren-bo-ke.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://oncrashreboot.com/elegant-best-pelican-theme-features#mailchimp"&gt;http://oncrashreboot.com/elegant-best-pelican-theme-features#mailchimp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://docs.getpelican.com/en/3.3.0/getting_started.html#writing-content-using-pelican"&gt;http://docs.getpelican.com/en/3.3.0/getting_started.html#writing-content-using-pelican&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://docs.getpelican.com/en/latest/settings.html"&gt;http://docs.getpelican.com/en/latest/settings.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://nsec.sjtu.edu.cn/~syma/blog/pelican_duoshuo.html"&gt;http://nsec.sjtu.edu.cn/~syma/blog/pelican_duoshuo.html&lt;/a&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="Pelican"></category><category term="Markdown"></category></entry></feed>
