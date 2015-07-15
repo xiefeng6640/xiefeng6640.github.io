@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>XF BLOG</title><link href="http://xiefeng6640.github.io/" rel="alternate"></link><link href="http://xiefeng6640.github.io/feeds/xf.atom.xml" rel="self"></link><id>http://xiefeng6640.github.io/</id><updated>2015-07-13T18:48:00+08:00</updated><entry><title>Window下基于Pelican搭建自己的博客</title><link href="http://xiefeng6640.github.io/articles/xue-xi-bi-ji/2015/build_blog.html" rel="alternate"></link><updated>2015-07-13T18:48:00+08:00</updated><author><name>XF</name></author><id>tag:xiefeng6640.github.io,2015-07-13:articles/xue-xi-bi-ji/2015/build_blog.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>XF BLOG</title><link href="http://xiefeng6640.github.io/" rel="alternate"></link><link href="http://xiefeng6640.github.io/feeds/xf.atom.xml" rel="self"></link><id>http://xiefeng6640.github.io/</id><updated>2015-07-15T17:40:03+08:00</updated><entry><title>基于Discuz!搭建内部交流论坛</title><link href="http://xiefeng6640.github.io/articles/xue-xi-bi-ji/2015/build_forum.html" rel="alternate"></link><updated>2015-07-15T17:40:03+08:00</updated><author><name>XF</name></author><id>tag:xiefeng6640.github.io,2015-07-15:articles/xue-xi-bi-ji/2015/build_forum.html</id><summary type="html">&lt;p&gt;之前都没接触过论坛的建设，只是偶尔听计算机专业的同学谈起做论坛是一件如何简单易行的事情，那时感觉挺不可思议的，无论从哪个方面去看，一个论坛包含的元素很多，有前端展示，也有后台管理，又岂是随便就能做出来的。后来恰逢老师给安排了个事，要弄一个本专业的内部论坛，用于师生的交流互动讨论，让我琢磨琢磨。然后自己就去各种Google去了，渐渐地才了解得知做个论坛其实还真挺简单的。自己就想着把这事记录下来，走得好不好，多少也还是自己的足迹。&lt;/p&gt;
+
+&lt;h2 id="_1"&gt;前言&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.discuz.net/forum.php"&gt;Discuz!&lt;/a&gt;&lt;blockquote&gt;
+&lt;p&gt;Discuz!是北京康盛新创科技有限责任公司推出的一套较为通用的社区搭建系统，用户可以不需要了解网站的具体编程就可以搭建出一个完整的社区论坛，而且随着版本的不断更新，Discuz!还提供手机客户端、微社区、社区模板等其他辅助功能，用户可以实现更为多元化的功能。&lt;/p&gt;
+&lt;p&gt;除了Discuz!之外，还有&lt;a href="http://www.phpwind.net/"&gt;phpwind&lt;/a&gt;，&lt;a href="http://cn.wordpress.org/"&gt;WordPress&lt;/a&gt;，这也是快速搭建论坛的其他选择。对于这三种的介绍，&lt;a href="http://caoruijun.blog.51cto.com/5544226/976113"&gt;这里&lt;/a&gt;有介绍说明，也有网站论坛搭建的截图，可以得到比较直观的认识。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="_2"&gt;准备环境&lt;/h2&gt;
+&lt;h3 id="21-phpnow"&gt;2.1 下载安装phpnow套件&lt;/h3&gt;
+&lt;p&gt;这里选择&lt;a href="http://servkit.org/"&gt;PHPnow&lt;/a&gt;(现在改名为ServKit)快速搭建出PHP环境，它包含Apache + PHP + MySQL 环境套件包。通过Setup.cmd简易安装、快速搭建支持虚拟主机的PHP环境。
+我这里用的是PHPnow-1.5.6，可以在百度网盘下载：
+&lt;a href="http://pan.baidu.com/s/1bni6HAJ"&gt;http://pan.baidu.com/s/1bni6HAJ&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="22"&gt;2.2 安装环境&lt;/h3&gt;
+&lt;p&gt;需要以管理员身份运行解压后的目录下的Setup.cmd，否则会安装失败。具体步骤为：&lt;/p&gt;
+&lt;p&gt;（1）以管理员身份运行cmd.exe. 可以在“C:/Windows/System32”下找到cmd.exe,右键选择“以管理员身份运行”，如下图所示。
+或者在开始菜单运行搜索框中 敲入cmd ，菜单上方程序栏中出现cmd图标，然后右键选择“以管理员身份运行”。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/cmd.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;（2）找到phpnow目录运行Setup.cmd，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/setup1.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;安装过程的选项均选择推荐即可&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/setup2.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/setup3.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;设置MYSQL的root密码&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/setup4.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;设置完成后将看到界面&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/test.jpg"/&gt;&lt;/p&gt;
+&lt;h2 id="_3"&gt;安装论坛&lt;/h2&gt;
+&lt;p&gt;（1）到&lt;a href="http://www.discuz.net/forum.php"&gt;http://www.discuz.net/forum.php&lt;/a&gt;下载discuz安装包，本站选用GBK版本，安装流程可参考：&lt;a href="http://bbs.zb7.com/thread-356436-1-1.html"&gt;http://bbs.zb7.com/thread-356436-1-1.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/discuz.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;（2）将压缩包解压后得到三个文件，将upload文件重命名，本站这里重命名为discuz，并将这三个文件移动到路径\htdocs目录下&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/files.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;（3）运行安装包。在浏览器中输入安装包的安装路径，本机的路径为cebbs.gxu.edu.cn/discuz/install/，后面开始安装环境，在安装的过程中需要填写数据库和管理员的账号密码信息，数据库账户与phpnow安装的myspl的账号一致，这里均为root账户。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/install.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;按照流程装完即可。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/finish.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;（4）论坛搭建好之后，需要进入后台配置相关参数，浏览器中输入论坛IP地址/admin.php，输入账号和密码之后即可。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="cmd" src="/images/backtop.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;至此，论坛就已经搭建完成了。后面的工作就是花心思、花精力的地方了，包括论坛的个性化设置、美化、布局等等，还有就是周期性地需要备份论坛的数据，虽说是内部使用，不过要是服务器不小心崩掉的话，数据也有可能丢失，所以还是谨慎些的好。&lt;/p&gt;
+&lt;p&gt;自己在建站的过程中了解到很多，建站容易，养站难，假如论坛要对外开放的话，还得弄个域名，搞网站备案，还得弄推广，SEO等，要学习、要了解的东西还排着老长的队等着你，所以也挺佩服那些站长的。&lt;/p&gt;</summary><category term="Discuz"></category><category term="论坛"></category></entry><entry><title>Window下基于Pelican搭建自己的博客</title><link href="http://xiefeng6640.github.io/articles/xue-xi-bi-ji/2015/build_blog.html" rel="alternate"></link><updated>2015-07-13T18:48:00+08:00</updated><author><name>XF</name></author><id>tag:xiefeng6640.github.io,2015-07-13:articles/xue-xi-bi-ji/2015/build_blog.html</id><summary type="html">
 &lt;h2 id="1"&gt;1. 前言&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
